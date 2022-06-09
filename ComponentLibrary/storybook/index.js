@@ -3,13 +3,14 @@ import {withKnobs} from '@storybook/addon-knobs';
 import {addDecorator, configure, getStorybookUI} from '@storybook/react-native';
 import {AppRegistry} from 'react-native';
 import './rn-addons';
+import {loadStories} from './storyLoader';
 
 // enables knobs for all stories
 addDecorator(withKnobs);
 
 // import stories
 configure(() => {
-  require('../App/stories/Button.stories');
+  loadStories();
 }, module);
 
 // Refer to https://github.com/storybookjs/react-native/tree/master/app/react-native#getstorybookui-options
