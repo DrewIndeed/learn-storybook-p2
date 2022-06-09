@@ -1,8 +1,47 @@
 import {storiesOf} from '@storybook/react-native';
 import React from 'react';
-import {View} from 'react-native';
-import {Form} from '../components/Form';
+import {Text, View} from 'react-native';
+import {FieldWrapper, Form} from '../components/Form';
 import {BufferView} from './decorators';
+
+storiesOf('Form/FieldWrapper', module)
+  .addDecorator(BufferView)
+  .add('default', () => (
+    <FieldWrapper label="Email">
+      <Text>Hello, wrapper.</Text>
+    </FieldWrapper>
+  ))
+  .add('error message', () => (
+    <FieldWrapper
+      label="Email"
+      message="Please enter a valid email!"
+      messageType="error">
+      <Text>Hello, wrapper.</Text>
+    </FieldWrapper>
+  ))
+  .add('success message', () => (
+    <FieldWrapper label="Email" message="Looks legit!" messageType="success">
+      <Text>Hello, wrapper.</Text>
+    </FieldWrapper>
+  ))
+  .add('mulitple fields', () => (
+    <>
+      <FieldWrapper label="Email">
+        <Text>Hello, wrapper.</Text>
+      </FieldWrapper>
+
+      <FieldWrapper
+        label="Email"
+        message="Please enter a valid email!"
+        messageType="error">
+        <Text>Hello, wrapper.</Text>
+      </FieldWrapper>
+
+      <FieldWrapper label="Email" message="Looks legit!" messageType="success">
+        <Text>Hello, wrapper.</Text>
+      </FieldWrapper>
+    </>
+  ));
 
 storiesOf('Form', module)
   .addDecorator(BufferView)

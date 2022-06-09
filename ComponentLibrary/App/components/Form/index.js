@@ -1,2 +1,3 @@
+import FieldWrapper from './FieldWrapper';
 import Form from './Form';
-export {Form};
+export {Form, FieldWrapper};
