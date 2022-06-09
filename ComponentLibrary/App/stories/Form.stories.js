@@ -1,8 +1,46 @@
+import {action} from '@storybook/addon-actions';
 import {storiesOf} from '@storybook/react-native';
 import React from 'react';
 import {Text, View} from 'react-native';
-import {FieldWrapper, Form} from '../components/Form';
+import {FieldWrapper, Form, TextInput} from '../components/Form';
 import {BufferView} from './decorators';
+
+const defaultTextInputProps = {
+  label: 'Demo',
+  onChangeText: action('onChangeText'),
+};
+storiesOf('Form/TextInput', module)
+  .addDecorator(BufferView)
+  .add('default', () => <TextInput {...defaultTextInputProps} />)
+  .add('with placeholder', () => (
+    <TextInput {...defaultTextInputProps} placeholder="Some placeholder" />
+  ))
+  .add('with value', () => (
+    <TextInput {...defaultTextInputProps} value="Some value" />
+  ))
+  .add('with error message', () => (
+    <TextInput
+      {...defaultTextInputProps}
+      message="This is an error"
+      messageType="error"
+    />
+  ))
+  .add('email', () => (
+    <TextInput
+      {...defaultTextInputProps}
+      label="Email"
+      value="andrew@gmail.com"
+      keyboardType="email-address"
+    />
+  ))
+  .add('password', () => (
+    <TextInput
+      {...defaultTextInputProps}
+      label="Password"
+      value="password"
+      secureTextEntry
+    />
+  ));
 
 storiesOf('Form/FieldWrapper', module)
   .addDecorator(BufferView)

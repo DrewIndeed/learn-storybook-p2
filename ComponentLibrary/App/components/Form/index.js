@@ -1,3 +1,4 @@
 import FieldWrapper from './FieldWrapper';
 import Form from './Form';
-export {Form, FieldWrapper};
+import TextInput from './TextInput';
+export {Form, FieldWrapper, TextInput};
